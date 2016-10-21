@@ -1,0 +1,21 @@
+[
+{
+  "modid": "aobdsingularities",
+  "name": "Another One Bites The Dust: Singularities",
+  "description": "An AOBD addon that adds singularities!",
+  "version": "0.0.1",
+  "mcversion":"1.7.10",
+  "url": "",
+  "updateUrl": "",
+  "authorList": [
+    "RCXcrafter"
+  ],
+  "credits": "ganymedes01 for making AOBD and TTFTCUTS and SpitefulFox for making Avaritia",
+  "logoFile": "",
+  "screenshots": [
+  ],
+  "parent":"",
+  "dependencies": [
+  ]
+}
+]
