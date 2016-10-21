@@ -1,4 +1,4 @@
-# AOBDsingularities
+# AOBD singularities
 This is an addon for [AOBD](http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/1293528), it adds singularities for [Avaritia](https://minecraft.curseforge.com/projects/avaritia).
 
 Avaritia adds a couple of singularities for ores that are commonly found in most mods and there are also a couple of addon mods that add more singularities to avaritia.
