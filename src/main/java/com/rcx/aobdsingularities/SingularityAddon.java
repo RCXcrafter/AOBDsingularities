@@ -19,10 +19,13 @@ import com.rcx.aobdsingularities.lib.Reference;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.avaritia.crafting.CompressorManager;
 import fox.spiteful.avaritia.crafting.CompressorRecipe;
 import fox.spiteful.avaritia.crafting.Grinder;
@@ -30,6 +33,7 @@ import fox.spiteful.avaritia.crafting.Grinder;
 public class SingularityAddon implements IAOBDAddon {
     
 	public static Map<Ore, SingularitiesConfigs> singulMap = new HashMap<Ore, SingularitiesConfigs>();
+	public static Collection<AOBDItemSingularity> singularityItems = new ArrayList();
 	
 	@Override
 	public void receiveOreList(Collection<Ore> ores) {
@@ -66,6 +70,7 @@ public class SingularityAddon implements IAOBDAddon {
 			singularity.setUnlocalizedName(Reference.MOD_ID + "." + singularity + ore);
 			OreFinder.registerOre(base + name, singularity);
 			OreDictionary.registerOre(base + name, singularity);
+			singularityItems.add(singularity);
 
 			// Add compressing recipe
 			CompressorManager.addOreRecipe(new ItemStack(singularity), config.getAmountNeeded(), "block" + ore);
@@ -73,6 +78,6 @@ public class SingularityAddon implements IAOBDAddon {
 			//add singularity to catalyst recipe
 			Grinder.catalyst.getInput().add(new ItemStack(singularity));
 		}
-	}	
+	}
 	public void notifyColourCreation() {}
 }

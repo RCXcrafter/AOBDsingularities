@@ -23,6 +23,8 @@ public class AOBDItemSingularity extends AOBDItem implements IHaloRenderItem {
 
     public static IIcon background;
     public static IIcon foreground;
+    
+    private Boolean hasEffect = null;
 
 	public AOBDItemSingularity(String base, Ore ore) {
 		super(base, ore);
@@ -34,8 +36,21 @@ public class AOBDItemSingularity extends AOBDItem implements IHaloRenderItem {
     @Override
     @SideOnly(Side.CLIENT)
     public int getColorFromItemStack(ItemStack itemstack, int renderpass) {
-        return renderpass == 0 ? ore.getColour().darker().getRGB() : ore.colour();
+        return renderpass == 0 ? ore.getColour().darker().darker().getRGB() : ore.colour();
     }
+
+	@Override
+	@SideOnly(Side.CLIENT)
+	public boolean hasEffect(ItemStack stack, int pass) {
+		if (hasEffect == null) {
+			hasEffect = false;
+			for (ItemStack ingot : OreDictionary.getOres("ingot" + ore.name()))
+				if (ingot != null && ingot.getItem().hasEffect(stack, pass))
+					hasEffect = true;
+		}
+
+		return pass == 0 ? false : hasEffect;
+	}
 
     @Override
     @SideOnly(Side.CLIENT)
