@@ -1,19 +1,14 @@
 package com.rcx.aobdsingularities.config;
 
-import net.minecraftforge.common.config.Configuration;
-
-import ganymedes01.aobd.lib.Reference;
 import ganymedes01.aobd.ore.Ore;
 
-import java.awt.Color;
 import java.io.File;
 import java.util.HashSet;
 import java.util.Map.Entry;
-
-import com.rcx.aobdsingularities.AOBDSingular;
-import com.rcx.aobdsingularities.SingularityAddon;
-
 import java.util.Set;
+
+import com.rcx.aobdsingularities.SingularityAddon;
+import com.rcx.aobdsingularities.lib.Reference;
 
 import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.client.event.ConfigChangedEvent;

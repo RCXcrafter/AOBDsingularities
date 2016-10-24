@@ -1,10 +1,8 @@
 package com.rcx.aobdsingularities;
 
 import ganymedes01.aobd.api.IAOBDAddon;
-import ganymedes01.aobd.items.AOBDItem;
 import ganymedes01.aobd.ore.Ore;
 import ganymedes01.aobd.ore.OreFinder;
-import ganymedes01.aobd.recipes.RecipesModule;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,18 +14,10 @@ import com.rcx.aobdsingularities.config.SingularitiesConfigs;
 import com.rcx.aobdsingularities.item.AOBDItemSingularity;
 import com.rcx.aobdsingularities.lib.Reference;
 
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import fox.spiteful.avaritia.crafting.CompressorManager;
-import fox.spiteful.avaritia.crafting.CompressorRecipe;
 import fox.spiteful.avaritia.crafting.Grinder;
 
 public class SingularityAddon implements IAOBDAddon {
@@ -75,7 +65,7 @@ public class SingularityAddon implements IAOBDAddon {
 			// Add compressing recipe
 			CompressorManager.addOreRecipe(new ItemStack(singularity), config.getAmountNeeded(), "block" + ore);
 			
-			//add singularity to catalyst recipe
+			// Add singularity to catalyst recipe
 			Grinder.catalyst.getInput().add(new ItemStack(singularity));
 		}
 	}

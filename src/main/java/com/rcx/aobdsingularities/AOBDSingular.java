@@ -2,8 +2,6 @@ package com.rcx.aobdsingularities;
 
 import net.minecraftforge.common.MinecraftForge;
 
-import java.util.ArrayList;
-
 import com.rcx.aobdsingularities.config.ConfigHandler;
 import com.rcx.aobdsingularities.lib.Reference;
 
