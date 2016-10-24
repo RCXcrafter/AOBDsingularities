@@ -1,8 +1,12 @@
 package com.rcx.aobdsingularities;
 
 import ganymedes01.aobd.api.IAOBDAddon;
+import ganymedes01.aobd.blocks.AOBDBlock;
+import ganymedes01.aobd.items.AOBDItem;
+import ganymedes01.aobd.items.AOBDItemBlock;
 import ganymedes01.aobd.ore.Ore;
 import ganymedes01.aobd.ore.OreFinder;
+import ganymedes01.aobd.recipes.RecipesModule;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -16,7 +20,10 @@ import com.rcx.aobdsingularities.lib.Reference;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.registry.GameRegistry;
 import fox.spiteful.avaritia.crafting.CompressorManager;
 import fox.spiteful.avaritia.crafting.Grinder;
 
@@ -61,9 +68,24 @@ public class SingularityAddon implements IAOBDAddon {
 			OreFinder.registerOre(base + name, singularity);
 			OreDictionary.registerOre(base + name, singularity);
 			singularityItems.add(singularity);
+			
+			// Add block if necessary
+			ItemStack ingotBlock;
+			if (OreDictionary.getOres("block" + ore.name()).isEmpty()) {
+				AOBDBlock nuggetItem = new AOBDBlock("block", ore);
+				ingotBlock = new ItemStack(nuggetItem);
+				OreFinder.registerOre("block" + ore.name(), nuggetItem);
+			} else
+				ingotBlock = RecipesModule.getOreStack("block", ore);
+
+			// Add ingot -> block recipes and block -> ingot
+			GameRegistry.addRecipe(new ShapedOreRecipe(ingotBlock, "xxx", "xxx", "xxx", 'x', "ingot" + ore.name()));
+			ItemStack ingotStack = RecipesModule.getOreStack("ingot", ore);
+			ingotStack.stackSize = 9;
+			GameRegistry.addRecipe(new ShapelessOreRecipe(ingotStack, ingotBlock));
 
 			// Add compressing recipe
-			CompressorManager.addOreRecipe(new ItemStack(singularity), config.getAmountNeeded(), "block" + ore);
+			CompressorManager.addRecipe(new ItemStack(singularity), config.getAmountNeeded(), ingotBlock);
 			
 			// Add singularity to catalyst recipe
 			Grinder.catalyst.getInput().add(new ItemStack(singularity));
