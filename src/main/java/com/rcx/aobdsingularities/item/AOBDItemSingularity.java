@@ -16,7 +16,6 @@ import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraftforge.client.IItemRenderer;
-import net.minecraftforge.oredict.OreDictionary;
 
 public class AOBDItemSingularity extends AOBDItem implements IHaloRenderItem {
 

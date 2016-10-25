@@ -1,7 +1,5 @@
 package com.rcx.aobdsingularities;
 
-import com.rcx.aobdsingularities.item.AOBDItemSingularity;
-
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;

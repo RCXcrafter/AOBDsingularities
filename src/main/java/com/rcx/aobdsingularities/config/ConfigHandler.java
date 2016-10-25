@@ -26,7 +26,7 @@ public class ConfigHandler {
 
 	public void init() {
 		usedCategories.clear();
-		usedCategories.add("AOBDsingularities");
+		//usedCategories.add("AOBDsingularities");
 		for (Entry<Ore, SingularitiesConfigs> entry : SingularityAddon.singulMap.entrySet())
 			init(entry.getKey().name(), entry.getValue());
 	}

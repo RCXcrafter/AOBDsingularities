@@ -1,6 +1,5 @@
 package com.rcx.aobdsingularities.config;
 
-
 import java.util.ArrayList;
 import java.util.List;
 

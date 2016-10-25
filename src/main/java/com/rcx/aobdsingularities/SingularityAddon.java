@@ -2,8 +2,6 @@ package com.rcx.aobdsingularities;
 
 import ganymedes01.aobd.api.IAOBDAddon;
 import ganymedes01.aobd.blocks.AOBDBlock;
-import ganymedes01.aobd.items.AOBDItem;
-import ganymedes01.aobd.items.AOBDItemBlock;
 import ganymedes01.aobd.ore.Ore;
 import ganymedes01.aobd.ore.OreFinder;
 import ganymedes01.aobd.recipes.RecipesModule;
@@ -75,17 +73,16 @@ public class SingularityAddon implements IAOBDAddon {
 				AOBDBlock nuggetItem = new AOBDBlock("block", ore);
 				ingotBlock = new ItemStack(nuggetItem);
 				OreFinder.registerOre("block" + ore.name(), nuggetItem);
-			} else
-				ingotBlock = RecipesModule.getOreStack("block", ore);
 
-			// Add ingot -> block recipes and block -> ingot
-			GameRegistry.addRecipe(new ShapedOreRecipe(ingotBlock, "xxx", "xxx", "xxx", 'x', "ingot" + ore.name()));
-			ItemStack ingotStack = RecipesModule.getOreStack("ingot", ore);
-			ingotStack.stackSize = 9;
-			GameRegistry.addRecipe(new ShapelessOreRecipe(ingotStack, ingotBlock));
+				// Add ingot -> block recipes and block -> ingot
+				GameRegistry.addRecipe(new ShapedOreRecipe(ingotBlock, "xxx", "xxx", "xxx", 'x', "ingot" + ore.name()));
+				ItemStack ingotStack = RecipesModule.getOreStack("ingot", ore);
+				ingotStack.stackSize = 9;
+				GameRegistry.addRecipe(new ShapelessOreRecipe(ingotStack, ingotBlock));
+			}
 
 			// Add compressing recipe
-			CompressorManager.addRecipe(new ItemStack(singularity), config.getAmountNeeded(), ingotBlock);
+			CompressorManager.addOreRecipe(new ItemStack(singularity), config.getAmountNeeded(), "block" + ore);
 			
 			// Add singularity to catalyst recipe
 			Grinder.catalyst.getInput().add(new ItemStack(singularity));
