@@ -50,6 +50,15 @@ public class SingularityAddon implements IAOBDAddon {
 				if ("Mithril".equals(name) ||
 					"Platinum".equals(name))
 						continue;
+			if (Loader.isModLoaded("universalsingularities"))
+				if ("Aluminum".equals(name) ||
+					"Aluminium".equals(name) ||
+					"Osmium".equals(name) ||
+					"Zinc".equals(name) ||
+					"Yellorium".equals(name) ||
+					"Ardite".equals(name) ||
+					"Cobalt".equals(name))
+						continue;
 			if (!OreDictionary.getOres("singularity" + name).isEmpty())
 				continue;
 
