@@ -2,10 +2,8 @@ package com.rcx.aobdsingularities;
 
 import net.minecraftforge.common.MinecraftForge;
 
-import com.rcx.aobdsingularities.config.ConfigHandler;
 import com.rcx.aobdsingularities.lib.Reference;
 
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -25,22 +23,13 @@ public class AOBDSingular {
 	public static CommonProxy proxy;
 	
 	@EventHandler
-	public void preInit(FMLPreInitializationEvent event)
-	{
-		ConfigHandler.INSTANCE.preInit(event.getSuggestedConfigurationFile());
-		FMLCommonHandler.instance().bus().register(ConfigHandler.INSTANCE);
-		AddonRegisterer.registerAddon();
-
+	public void preInit(FMLPreInitializationEvent event) {
 		MinecraftForge.EVENT_BUS.register(this);
-
 		proxy.preInit(event);
 	}
 
 	@EventHandler
-	public void init(FMLInitializationEvent event)
-	{
-		ConfigHandler.INSTANCE.init();
-
+	public void init(FMLInitializationEvent event) {
 		proxy.init(event);
 	}
 

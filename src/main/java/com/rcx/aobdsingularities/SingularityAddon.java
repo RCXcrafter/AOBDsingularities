@@ -28,7 +28,7 @@ import fox.spiteful.avaritia.crafting.Grinder;
 public class SingularityAddon implements IAOBDAddon {
     
 	public static Map<Ore, SingularitiesConfigs> singulMap = new HashMap<Ore, SingularitiesConfigs>();
-	public static Collection<String> singularityItems = new ArrayList();
+	public static Collection<AOBDItemSingularity> singularityItems = new ArrayList();
 	
 	@Override
 	public void receiveOreList(Collection<Ore> ores) {
@@ -82,7 +82,7 @@ public class SingularityAddon implements IAOBDAddon {
 			singularity.setUnlocalizedName(Reference.MOD_ID + "." + singularity + ore);
 			OreFinder.registerOre(base + name, singularity);
 			OreDictionary.registerOre(base + name, singularity);
-			singularityItems.add(base + name);
+			singularityItems.add(singularity);
 			
 			// Add block if necessary
 			ItemStack ingotBlock;

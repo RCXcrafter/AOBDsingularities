@@ -32,7 +32,7 @@ public class AOBDItemSingularity extends AOBDItem implements IHaloRenderItem {
     @Override
     @SideOnly(Side.CLIENT)
     public int getColorFromItemStack(ItemStack itemstack, int renderpass) {
-        return renderpass == 0 ? ore.getColour().darker().darker().getRGB() : ore.colour();
+        return renderpass == 0 ? ore.getColour().darker().getRGB() : ore.colour();
     }
 
     @Override

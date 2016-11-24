@@ -1,5 +1,7 @@
 package com.rcx.aobdsingularities;
 
+import com.rcx.aobdsingularities.item.AOBDItemSingularity;
+
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -23,8 +25,8 @@ public class ClientProxy extends CommonProxy {
 	public void postInit(FMLPostInitializationEvent event) {
 		FancyHaloRenderer haloAndGudbye = new FancyHaloRenderer();
 		
-		for (String singularity : SingularityAddon.singularityItems) {
-			MinecraftForgeClient.registerItemRenderer(GameRegistry.findItem("aobd", singularity), haloAndGudbye);
+		for (AOBDItemSingularity singularity : SingularityAddon.singularityItems) {
+			MinecraftForgeClient.registerItemRenderer(singularity, haloAndGudbye);
 		}
 
 		super.postInit(event);
