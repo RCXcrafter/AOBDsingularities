@@ -5,16 +5,16 @@
   "description": "An AOBD addon that adds singularities!",
   "version": "1.0.4",
   "mcversion":"1.7.10",
-  "url": "",
+  "url": "https://minecraft.curseforge.com/projects/aobd-singularities",
   "updateUrl": "",
   "authorList": [
     "RCXcrafter"
   ],
   "credits": "ganymedes01 for making AOBD and TTFTCUTS and SpitefulFox for making Avaritia",
-  "logoFile": "",
+  "logoFile": "aobd_singularities_logo.png",
   "screenshots": [
   ],
-  "parent":"",
+  "parent"",
   "dependencies": [
   ]
 }
