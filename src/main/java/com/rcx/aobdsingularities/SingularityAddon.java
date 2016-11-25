@@ -16,6 +16,7 @@ import com.rcx.aobdsingularities.config.SingularitiesConfigs;
 import com.rcx.aobdsingularities.item.AOBDItemSingularity;
 import com.rcx.aobdsingularities.lib.Reference;
 
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
@@ -28,7 +29,7 @@ import fox.spiteful.avaritia.crafting.Grinder;
 public class SingularityAddon implements IAOBDAddon {
     
 	public static Map<Ore, SingularitiesConfigs> singulMap = new HashMap<Ore, SingularitiesConfigs>();
-	public static Collection<AOBDItemSingularity> singularityItems = new ArrayList();
+	public static Collection<Item> singularityItems = new ArrayList();
 	
 	@Override
 	public void receiveOreList(Collection<Ore> ores) {
@@ -82,7 +83,7 @@ public class SingularityAddon implements IAOBDAddon {
 			singularity.setUnlocalizedName(Reference.MOD_ID + "." + singularity + ore);
 			OreFinder.registerOre(base + name, singularity);
 			OreDictionary.registerOre(base + name, singularity);
-			singularityItems.add(singularity);
+			singularityItems.add((Item)singularity);
 			
 			// Add block if necessary
 			ItemStack ingotBlock;

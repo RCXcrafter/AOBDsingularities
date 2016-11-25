@@ -7,6 +7,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fox.spiteful.avaritia.render.FancyHaloRenderer;
+import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
 
 public class ClientProxy extends CommonProxy {
@@ -25,7 +26,7 @@ public class ClientProxy extends CommonProxy {
 	public void postInit(FMLPostInitializationEvent event) {
 		FancyHaloRenderer haloAndGudbye = new FancyHaloRenderer();
 		
-		for (AOBDItemSingularity singularity : SingularityAddon.singularityItems) {
+		for (Item singularity : SingularityAddon.singularityItems) {
 			MinecraftForgeClient.registerItemRenderer(singularity, haloAndGudbye);
 		}
 
