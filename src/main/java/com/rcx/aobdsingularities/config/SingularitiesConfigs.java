@@ -34,5 +34,5 @@ public class SingularitiesConfigs {
 
 	public void setAmountNeeded(int amountNeeded) {
 		this.amountNeeded = amountNeeded;
-	}                            
+	}
 }

@@ -16,16 +16,16 @@ public class ClientProxy extends CommonProxy {
 	public void preInit(FMLPreInitializationEvent event) {
 		super.preInit(event);
 	}
-	
+
 	@Override
 	public void init(FMLInitializationEvent event) {
 		super.init(event);
 	}
-	
+
 	@Override
 	public void postInit(FMLPostInitializationEvent event) {
 		FancyHaloRenderer haloAndGudbye = new FancyHaloRenderer();
-		
+
 		for (Item singularity : SingularityAddon.singularityItems) {
 			MinecraftForgeClient.registerItemRenderer(singularity, haloAndGudbye);
 		}

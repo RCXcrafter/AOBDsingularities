@@ -27,17 +27,17 @@ import fox.spiteful.avaritia.crafting.CompressorManager;
 import fox.spiteful.avaritia.crafting.Grinder;
 
 public class SingularityAddon implements IAOBDAddon {
-    
+
 	public static Map<Ore, SingularitiesConfigs> singulMap = new HashMap<Ore, SingularitiesConfigs>();
 	public static Collection<Item> singularityItems = new ArrayList();
-	
+
 	@Override
 	public void receiveOreList(Collection<Ore> ores) {
-		
+
 		for (Ore ore : ores) {
 			if (!ore.isEnabled())
 				continue;
-			
+
 			String name = ore.name();
 			if ("Iron".equals(name) ||
 				"Gold".equals(name) ||
@@ -66,8 +66,11 @@ public class SingularityAddon implements IAOBDAddon {
 					"Draconium".equals(name) ||
 					"Carbon".equals(name) ||
 					"Crystal".equals(name) ||
-					"Palladium".equals(name))
+					"Palladium".equals(name) ||
+					"Steel".equals(name) ||
+					"Electrum".equals(name))
 						continue;
+
 			if (!OreDictionary.getOres("singularity" + name).isEmpty())
 				continue;
 
@@ -83,8 +86,8 @@ public class SingularityAddon implements IAOBDAddon {
 			singularity.setUnlocalizedName(Reference.MOD_ID + "." + singularity + ore);
 			OreFinder.registerOre(base + name, singularity);
 			OreDictionary.registerOre(base + name, singularity);
-			singularityItems.add((Item)singularity);
-			
+			singularityItems.add((Item) singularity);
+
 			// Add block if necessary
 			ItemStack ingotBlock;
 			if (OreDictionary.getOres("block" + ore.name()).isEmpty()) {
@@ -101,7 +104,7 @@ public class SingularityAddon implements IAOBDAddon {
 
 			// Add compressing recipe
 			CompressorManager.addOreRecipe(new ItemStack(singularity), config.getAmountNeeded(), "block" + ore);
-			
+
 			// Add singularity to catalyst recipe
 			Grinder.catalyst.getInput().add(new ItemStack(singularity));
 		}

@@ -19,8 +19,8 @@ import net.minecraftforge.client.IItemRenderer;
 
 public class AOBDItemSingularity extends AOBDItem implements IHaloRenderItem {
 
-    public static IIcon background;
-    public static IIcon foreground;
+	public static IIcon background;
+	public static IIcon foreground;
 
 	public AOBDItemSingularity(String base, Ore ore) {
 		super(base, ore);
@@ -29,30 +29,34 @@ public class AOBDItemSingularity extends AOBDItem implements IHaloRenderItem {
 		setUnlocalizedName(Reference.MOD_ID + "." + base + ore);
 	}
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public int getColorFromItemStack(ItemStack itemstack, int renderpass) {
-        return renderpass == 0 ? ore.getColour().darker().getRGB() : ore.colour();
-    }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public int getColorFromItemStack(ItemStack itemstack, int renderpass) {
+		return renderpass == 0 ? ore.getColour().darker().getRGB() : ore.colour();
+	}
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public void registerIcons(IIconRegister ir) {
-    	foreground = ir.registerIcon("avaritia:singularity");
-    	background = ir.registerIcon("avaritia:singularity2");
-    }
-    
-    @Override
-    public IIcon getIcon(ItemStack stack, int pass) {
-    	if (pass == 0) { return background; }
-    	return foreground;
-    }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IIconRegister ir) {
+		foreground = ir.registerIcon("avaritia:singularity");
+		background = ir.registerIcon("avaritia:singularity2");
+	}
+
+	@Override
+	public IIcon getIcon(ItemStack stack, int pass) {
+		if (pass == 0) {
+			return background;
+		}
+		return foreground;
+	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
 	public IIcon getIconFromDamageForRenderPass(int meta, int pass) {
-    	if (pass == 0) { return background; }
-    	return foreground;
+		if (pass == 0) {
+			return background;
+		}
+		return foreground;
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -62,14 +66,14 @@ public class AOBDItemSingularity extends AOBDItem implements IHaloRenderItem {
 		return null;
 	}
 
-    @SideOnly(Side.CLIENT)
-    public boolean requiresMultipleRenderPasses() {
-        return true;
-    }
+	@SideOnly(Side.CLIENT)
+	public boolean requiresMultipleRenderPasses() {
+		return true;
+	}
 
-    public EnumRarity getRarity(ItemStack stack) {
-        return EnumRarity.uncommon;
-    }
+	public EnumRarity getRarity(ItemStack stack) {
+		return EnumRarity.uncommon;
+	}
 
 	@SideOnly(Side.CLIENT)
 	public boolean drawHalo(ItemStack paramItemStack) {
@@ -78,7 +82,7 @@ public class AOBDItemSingularity extends AOBDItem implements IHaloRenderItem {
 
 	@SideOnly(Side.CLIENT)
 	public IIcon getHaloTexture(ItemStack paramItemStack) {
-		return ((ItemResource)LudicrousItems.resource).halo[0];
+		return ((ItemResource) LudicrousItems.resource).halo[0];
 	}
 
 	@SideOnly(Side.CLIENT)
